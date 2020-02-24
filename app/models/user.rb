@@ -48,4 +48,9 @@ class User < ApplicationRecord
     favorites = self.favorites.find_by(micropost_id: other_micropost.id)
     favorites.destroy if favorites
   end
+  
+  def likes
+    Micropost.where(id: self.favorite_ids)
+  end
+  
 end

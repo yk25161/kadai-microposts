@@ -7,5 +7,5 @@ module UsersHelper
 ?s=
 #{size}
 "
-  end
+    end
 end
