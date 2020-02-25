@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :fav_microposts, through: :favorites, source: :micropost
 
   def follow(other_user)
-    unless self ==other_user
+    unless self == other_user
      self.relationships.find_or_create_by(follow_id: other_user.id)
     end
   end
@@ -49,8 +49,10 @@ class User < ApplicationRecord
     favorites.destroy if favorites
   end
   
-  def likes
-    Micropost.where(id: self.favorite_ids)
+  def feed_likes
+  like = Favorite.where(user_id: self.id).select('micropost_id')
+  Micropost.where(id: like)
+   
   end
   
 end

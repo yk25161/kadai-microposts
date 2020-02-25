@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   def create
     micropost = Micropost.find(params[:micropost_id])
     current_user.favorite(micropost)
-    flash[:succcess] = 'お気に入りに登録しました。'
+    flash[:success] = 'お気に入りに登録しました。'
     redirect_to root_url
   end
 
