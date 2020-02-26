@@ -50,9 +50,8 @@ class User < ApplicationRecord
   end
   
   def feed_likes
-  like = Favorite.where(user_id: self.id).select('micropost_id')
-  Micropost.where(id: like)
-   
+    like = self.favorites.select('micropost_id')
+    Micropost.where(id: like)
   end
   
 end
