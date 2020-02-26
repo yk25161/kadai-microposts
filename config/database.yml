@@ -20,8 +20,6 @@ default: &default
 development:
   <<: *default
   database: microposts_development
-  host: localhost
-  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -54,5 +52,5 @@ production:
   encoding: unicode
   pool: 5
   database: microposts_production
-  username: message-board
-  password: <%= ENV['MESSAGE-BOARD_DATABASE_PASSWORD'] %>
+  username: micropost
+  password: <%= ENV['MICROPOSTS_DATABASE_PASSWORD'] %>
