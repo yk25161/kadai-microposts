@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   include SessionsHelper
-
+  helper_method :count_favorites
 private
 
 def require_user_logged_in
@@ -14,6 +14,10 @@ def counts(user)
   @count_microposts = user.microposts.count
   @count_followings = user.followings.count
   @count_followers = user.followers.count
-  @count_favorites = curren_user.favorites.count
 end
+
+def count_favorites
+  Favorite.where(user_id: session[:user_id]).count
+end
+
 end
